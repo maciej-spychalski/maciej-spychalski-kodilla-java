@@ -47,8 +47,8 @@ public class CollectionTestSuite {
         //When
         ArrayList<Integer> rightNumber = OddNumbersExterminator.exterminate(allNumber);
         System.out.println("Testing OddNumberExterminator method");
-        boolean isProperElement;
         //Then
+        boolean isProperElement;
         for (int i = 0; i < rightNumber.size(); i++) {
             isProperElement = rightNumber.get(i) % 2 == 0;
             Assert.assertTrue(isProperElement);
