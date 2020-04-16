@@ -50,8 +50,6 @@ public class ForumStatisticsTestSuite {
         double averageNumberOfCommentsPerUser = numberOfComments / numberOfUsers;
         double averageNumberOfCommentsPerPost = 0;
 
-//        when(statisticsMock.usersNames()).thenReturn(generateUsersNames(0));
-//        when(statisticsMock.usersNames().size()).thenReturn(numberOfUsers);
         when(statisticsMock.usersNames()).thenReturn(generateUsersNames(numberOfUsers));
         when(statisticsMock.postsCount()).thenReturn(numberOfPosts);
         when(statisticsMock.commentsCount()).thenReturn(numberOfComments);
