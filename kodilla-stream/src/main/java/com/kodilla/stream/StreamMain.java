@@ -1,25 +1,27 @@
 package com.kodilla.stream;
 
-import com.kodilla.stream.beautifier.PoemBeautifier;
-import com.kodilla.stream.iterate.NumbersGenerator;
+import com.kodilla.stream.book.Book;
+import forumuser.Forum;
+import forumuser.ForumUser;
+
+import java.time.LocalDate;
+import java.util.Map;
+import java.util.stream.Collectors;
 
 public class StreamMain {
     public static void main(String[] args) {
-        PoemBeautifier poemBeautifier = new PoemBeautifier();
+        Forum theForum = new Forum();
 
-        String poem = "\nCzemu ty się, zła godzino,\n" +
-                        "z niepotrzebnym mieszasz lękiem?\n" +
-                        "Jesteś - a więc musisz minąć.\n" +
-                        "Miniesz - a więc to jest piękne.\n";
+        Map<Integer, ForumUser> theResultMapOfUserss = theForum.getUserList().stream()
+                .filter(user -> user.getSex() == 'M')
+                .filter(user -> LocalDate.now().getYear() - user.getBirthDate().getYear() >= 20)
+                .filter(user -> user.getNumberOfPosts() >= 1)
+                .collect(Collectors.toMap(ForumUser::getUserID, user -> user));
 
-        poemBeautifier.beautify(poem, (stringToDecorate) -> "****" + stringToDecorate + "***");
-        poemBeautifier.beautify(poem, (stringToDecorate) ->  stringToDecorate.toUpperCase());
-        poemBeautifier.beautify(poem, (stringToDecorate) ->  stringToDecorate.replace(' ', '\t'));
-        poemBeautifier.beautify(poem, (stringToDecorate) ->
-                "****" + stringToDecorate.replace(' ', '\n') + "***");
-
-        System.out.println("Using Stream to generate even numbers from 1 to 20");
-        NumbersGenerator.generateEven(20);
+        System.out.println("# elements: " + theResultMapOfUserss.size());
+        theResultMapOfUserss.entrySet().stream()
+                .map(entry -> entry.getKey() + ": " + entry.getValue())
+                .forEach(System.out::println);
 
     }
 }
