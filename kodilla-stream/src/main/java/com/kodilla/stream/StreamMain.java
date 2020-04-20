@@ -1,11 +1,11 @@
 package com.kodilla.stream;
 
-import forumuser.Forum;
-import forumuser.ForumUser;
+        import forumuser.Forum;
+        import forumuser.ForumUser;
 
-import java.time.LocalDate;
-import java.util.Map;
-import java.util.stream.Collectors;
+        import java.time.LocalDate;
+        import java.util.Map;
+        import java.util.stream.Collectors;
 
 public class StreamMain {
     public static void main(String[] args) {
