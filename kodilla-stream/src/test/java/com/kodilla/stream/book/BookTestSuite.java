@@ -33,17 +33,6 @@ public class BookTestSuite {
         List<Book> books = bookDirectory.getList();
 
         //Then
-//        int numberOfBooksPublicatedAfter2007 = IntStream.range(0, books.size())
-//                .filter(n -> books.get(n).getYearOfPublication() > 2007)
-//                .map(n -> 1)
-//                .sum();
-
-        // Możemy jednak jeszcze bardziej uprościć naszą funkcyjną "pętlę for", wykorzystując do tego celu operację
-        // terminalną count() strumienia. Operacja ta jest kolektorem skalarnym i zwraca liczbę typu long. W przypadku
-        // zastosowania metody count(), nie musimy mapować indeksów na "jedynki" — chcemy po prostu sprawdzić liczbę
-        // indeksów w strumieniu po filtrze.
-        // Zwróć uwagę, że musimy również zmienić typ zmiennej numberOfBooksPublicatedAfter2007 na typ long
-        // (co wynika z tego, że kolektor count() zwraca wynik typu long):
         long numberOfBooksPublicatedAfter2007 = IntStream.range(0, books.size())
                 .filter(n -> books.get(n).getYearOfPublication() > 2007)
                 .count();
