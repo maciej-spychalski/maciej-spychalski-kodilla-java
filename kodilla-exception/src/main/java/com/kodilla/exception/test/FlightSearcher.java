@@ -8,12 +8,9 @@ public class FlightSearcher {
 
     public FlightSearcher() {
         mapOfFlights = new HashMap<>();
-    }
-
-    public void setAvailableFlights() {
 
         mapOfFlights.put("Warsaw Chopin Airport", false);
-        mapOfFlights.put("Berlin Brandenburg Internantiona Airport", false);
+        mapOfFlights.put("Berlin Brandenburg International Airport", false);
         mapOfFlights.put("London Heatrow Airport", true);
         mapOfFlights.put("John F. Kennedy International Airport", true);
     }
