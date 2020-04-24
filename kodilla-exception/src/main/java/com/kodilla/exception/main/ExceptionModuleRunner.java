@@ -7,6 +7,7 @@ package com.kodilla.exception.main;
 public class ExceptionModuleRunner {
     public static void main(String[] args) {
         FlightSearcher flightSearcher = new FlightSearcher();
+        flightSearcher.setAvailableFlights();
         try {
             flightSearcher.findFilght(new Flight("Hurghada International Airport",
                     "Radom Airport"));
