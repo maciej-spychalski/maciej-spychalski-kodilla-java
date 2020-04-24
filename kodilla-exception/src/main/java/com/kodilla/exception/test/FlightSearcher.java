@@ -9,13 +9,13 @@ public class FlightSearcher {
     public FlightSearcher() {
         mapOfFlights = new HashMap<>();
 
-        mapOfFlights.put("Warsaw Chopin Airport", false);
+        mapOfFlights.put("Warsaw Chopin Airport", true);
         mapOfFlights.put("Berlin Brandenburg International Airport", false);
         mapOfFlights.put("London Heatrow Airport", true);
         mapOfFlights.put("John F. Kennedy International Airport", true);
     }
 
-    public void findFilght(Flight flight) throws RouteNotFoundException {
+    public boolean findFilght(Flight flight) throws RouteNotFoundException {
 
         long possibleFlight = 0;
         possibleFlight = mapOfFlights.entrySet().stream()
@@ -23,14 +23,16 @@ public class FlightSearcher {
                 .count();
 
         if (possibleFlight == 1) {
-            System.out.print("Destination airport is available. ");
+            System.out.print("\nDestination airport is available. ");
             if (mapOfFlights.get(flight.getArrivalAirport())) {
                 System.out.println("Have a nice flight");
+                return true;
             } else {
                 System.out.println("There is currently no flight to this airport");
+                return false;
             }
         } else {
-            throw new RouteNotFoundException("There is no such an destination airport");
+            throw new RouteNotFoundException("\n\nThere is no such destination airport");
         }
 
     }
