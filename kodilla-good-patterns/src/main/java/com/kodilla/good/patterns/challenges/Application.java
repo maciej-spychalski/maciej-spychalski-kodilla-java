@@ -13,6 +13,6 @@ public class Application {
                 .map(entry -> entry.getValue())
                 .flatMap(s -> s.stream())
                 .collect(Collectors.joining("!","",""));
-        System.out.println(theResultStringOfMovie);
+        System.out.println("\n" + theResultStringOfMovie + "\n");
     }
 }
