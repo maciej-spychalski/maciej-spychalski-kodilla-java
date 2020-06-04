@@ -15,7 +15,7 @@ public class Application {
                 .forEach(System.out::println);
 
         System.out.println();
-        String destinationCity = "Warszawa";
+        String destinationCity = "Krakow";
         System.out.println("All flights to: " + destinationCity);
         airports.getAllFlight().entrySet().stream()
                 .map(entry -> entry.getValue())
