@@ -26,12 +26,7 @@ public class Application {
         System.out.println();
         Flight theFlight = new Flight("Gdansk", "Warszawa");
         System.out.println("All indirect flights from " + theFlight.getFrom() + " to " + theFlight.getTo());
-        Set<Flight> flightFrom =  airports.getAllFlight().entrySet().stream()
-                .map(entry -> entry.getValue())
-                .flatMap(f ->f.stream())
-                .filter(f -> f.getFrom().equals(theFlight.getFrom()))
-                .collect(Collectors.toSet());
-        flightFrom.remove(theFlight);
+        Set<Flight> flightFrom =  airports.getAllFlight().get(theFlight.getFrom());
 
         Set<Flight> flightVia =  airports.getAllFlight().entrySet().stream()
                 .map(entry -> entry.getValue())
