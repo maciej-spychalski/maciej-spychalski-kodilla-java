@@ -1,44 +1,13 @@
 package com.kodilla.good.patterns.challenges.flightoperator;
 
-import java.util.*;
-import java.util.stream.Collectors;
-
 public class Application {
     public static void main(String[] args) {
 
-        Airports airports = new Airports();
+        FlightService flightService = new FlightService();
 
-        System.out.println();
-        String departureCity = "Warszawa";
-        System.out.println("All flights to: " + departureCity);
-        airports.getAllFlight().get(departureCity).stream()
-                .forEach(System.out::println);
+        flightService.findAllFlightsFrom("Warszawa");
+        flightService.findAllFlightsTo("Krakow");
+        flightService.findAllIndirectFlight(new Flight("Gdansk", "Warszawa"));
 
-        System.out.println();
-        String destinationCity = "Krakow";
-        System.out.println("All flights to: " + destinationCity);
-        airports.getAllFlight().entrySet().stream()
-                .map(entry -> entry.getValue())
-                .flatMap(f ->f.stream())
-                .filter(f -> f.getTo().equals(destinationCity))
-                .forEach(System.out::println);
-
-        System.out.println();
-        Flight theFlight = new Flight("Gdansk", "Warszawa");
-        System.out.println("All indirect flights from " + theFlight.getFrom() + " to " + theFlight.getTo());
-        Set<Flight> flightFrom =  airports.getAllFlight().get(theFlight.getFrom());
-
-        Set<Flight> flightVia =  airports.getAllFlight().entrySet().stream()
-                .map(entry -> entry.getValue())
-                .flatMap(f ->f.stream())
-                .filter(f -> f.getTo().equals(theFlight.getTo()))
-                .collect(Collectors.toSet());
-
-        for(Flight flight : flightFrom) {
-            flightVia.stream()
-                    .filter(f -> f.getFrom().equals(flight.getTo()))
-                    .map(f -> flight + " " + f.toString())
-                    .forEach(System.out::println);
-        }
     }
 }
