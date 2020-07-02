@@ -2,6 +2,7 @@ package com.kodilla.hibernate.tasklist.dao;
 
 import com.kodilla.hibernate.task.Task;
 import com.kodilla.hibernate.task.TaskFinancialDetails;
+import com.kodilla.hibernate.task.dao.TaskDao;
 import com.kodilla.hibernate.tasklist.TaskList;
 import org.junit.Assert;
 import org.junit.Test;
@@ -18,6 +19,8 @@ import java.util.List;
 public class TaskListDaoTestSuite {
     @Autowired
     private TaskListDao taskListDao;
+    @Autowired
+    private TaskDao taskDao;
     public static final String LISTNAME = "First List";
 
     @Test
@@ -65,6 +68,7 @@ public class TaskListDaoTestSuite {
 
     @Test
     public void testNamedQueries() {
+        //Given
         Task task1 = new Task("Test: Study Hibernate", 3);
         Task task2 = new Task("Test: Practice Named Queries", 6);
         Task task3 = new Task("Test: Study native queries", 7);
@@ -94,5 +98,22 @@ public class TaskListDaoTestSuite {
         taskListDao.save(taskList);
         int id = taskList.getId();
 
+        //When
+        List<Task> longTasks = taskDao.retrieveLongTasks();
+        List<Task> shortTasks = taskDao.retrieveShortTasks();
+        List<Task> enoughTimeTasks = taskDao.retrieveTasksWithEnoughTime();
+        List<Task> durationLongerThanTasks = taskDao.retrieveTasksWithDurationLongerThan(6);
+
+        //Then
+        try {
+            Assert.assertEquals(1, longTasks.size());
+            Assert.assertEquals(3, shortTasks.size());
+            Assert.assertEquals(3, enoughTimeTasks.size());
+            Assert.assertEquals(2, durationLongerThanTasks.size());
+        } finally {
+            //CleanUp
+            taskListDao.deleteById(id);
+        }
     }
+
 }
