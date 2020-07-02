@@ -20,7 +20,7 @@ public class Item {
         this.product = product;
         this.price = price;
         this.quantity = quantity;
-        value = price.multiply(new BigDecimal(Integer.toString(quantity)));
+        value = price.multiply(new BigDecimal(quantity));
     }
 
     @Id
