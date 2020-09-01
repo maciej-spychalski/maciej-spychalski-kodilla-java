@@ -24,9 +24,9 @@ public class SearchingFacade {
         LOGGER.info("Searching for employee by his part name: " + employeePartName);
         List<Employee> employees = employeeDao.retrievedEmployeeByPartName(employeePartName);
         if (employees.size() > 0) {
-            LOGGER.info(employees.size() + (employees.size() == 1 ? " employee has " : "employees have ") + "been found");
+            LOGGER.info(employees.size() + (employees.size() == 1 ? " employee has " : " employees have ") + "been found");
             for (Employee theEmployee : employees) {
-                System.out.println("Employee = " + theEmployee.getFirstname() + theEmployee.getLastname());
+                LOGGER.info("Employee = " + theEmployee.getFirstname() + theEmployee.getLastname());
             }
         } else {
             LOGGER.info(SearchingException.ERR_NO_EMPLOYEE);
@@ -38,9 +38,9 @@ public class SearchingFacade {
         LOGGER.info("Searching for commpany by it's part name: " + companyPartName);
         List<Company> companies = companyDao.retrieveCompanyByPartName(companyPartName);
         if (companies.size() > 0) {
-            LOGGER.info(companies.size() + (companies.size() == 1 ? " company has " : "companies have ") + "been found");
+            LOGGER.info(companies.size() + (companies.size() == 1 ? " company has " : " companies have ") + "been found");
             for (Company theCompany : companies) {
-                System.out.println("Company = " + theCompany.getName());
+                LOGGER.info("Company = " + theCompany.getName());
             }
         } else {
             LOGGER.info(SearchingException.ERR_NO_COMPANY);
