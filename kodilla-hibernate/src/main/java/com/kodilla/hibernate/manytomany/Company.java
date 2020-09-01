@@ -5,11 +5,18 @@ import javax.validation.constraints.NotNull;
 import java.util.ArrayList;
 import java.util.List;
 
-@NamedNativeQuery(
-        name = "Company.retrieveCompaniesByFirstThreeLetters",
-        query = "SELECT * FROM COMPANIES WHERE SUBSTRING(COMPANY_NAME,1,3) = :FIRST_THREE_LETTERS",
-        resultClass = Company.class
-)
+@NamedNativeQueries({
+        @NamedNativeQuery(
+                name = "Company.retrieveCompaniesByFirstThreeLetters",
+                query = "SELECT * FROM COMPANIES WHERE SUBSTRING(COMPANY_NAME,1,3) = :FIRST_THREE_LETTERS",
+                resultClass = Company.class
+        ),
+        @NamedNativeQuery(
+                name = "Company.retrieveCompanyByPartName",
+                query = "SELECT * FROM COMPANIES WHERE COMPANY_NAME LIKE CONCAT('%',:COMPANY_PART_NAME, '%')",
+                resultClass = Company.class
+        )
+} )
 
 @Entity
 @Table(name = "COMPANIES")
@@ -54,7 +61,5 @@ public class Company {
     public void setName(String name) {
         this.name = name;
     }
+
 }
-
-
-
