@@ -12,4 +12,3 @@ public class ProductService {
         return new BigDecimal(generator.nextInt(100000) /100);
     }
 }
-

@@ -46,5 +46,4 @@ public class Order {
 
     public void setSubmitted(boolean submitted) {    isSubmitted = submitted; }
 
-
 }
