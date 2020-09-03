@@ -23,6 +23,7 @@ repositories {
 }
 
 dependencies {
+    compile('org.springframework.boot:spring-boot-starter-aop')
     implementation 'org.springframework.boot:spring-boot-starter'
     testImplementation('org.springframework.boot:spring-boot-starter-test') {
         exclude group: 'org.junit.vintage', module: 'junit-vintage-engine'
@@ -33,4 +34,3 @@ dependencies {
 test {
     useJUnitPlatform()
 }
-
