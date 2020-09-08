@@ -2,7 +2,7 @@ package com.kodilla.patterns2.observer.homework;
 
 public class Mentor implements Observer {
     private final String username;
-    private int tasksCompleted;
+    private int tasksChecked;
 
     public Mentor(String username) {
         this.username = username;
@@ -10,15 +10,11 @@ public class Mentor implements Observer {
 
     @Override
     public void update(StudentTasks studentTasks) {
-        System.out.println(username + ": New task to check: " + studentTasks.getName());
-        tasksCompleted++;
+        System.out.println(username + ": New task to check from student: " + studentTasks.getStudent().getStudentName());
+        tasksChecked++;
     }
 
-    public String getUsername() {
-        return username;
-    }
-
-    public int getTasksCompleted() {
-        return tasksCompleted;
+    public int getTasksChecked() {
+        return tasksChecked;
     }
 }

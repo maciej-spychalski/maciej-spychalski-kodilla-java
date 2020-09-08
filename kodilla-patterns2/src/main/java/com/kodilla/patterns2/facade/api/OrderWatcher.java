@@ -11,11 +11,6 @@ import org.springframework.stereotype.Component;
 public class OrderWatcher {
     private static final Logger LOGGER = LoggerFactory.getLogger(OrderWatcher.class);
 
-//    @Before("execution(* com.kodilla.patterns2.facade.api.OrderFacade.processOrder(..))")
-//    public void logEvent() {
-//        LOGGER.info("Order executed");
-//    }
-
     @Before("execution(* com.kodilla.patterns2.facade.api.OrderFacade.processOrder(..))" +
             "&& args(order, userId) ")
     public void logEvent(OrderDto order ,Long userId) {
