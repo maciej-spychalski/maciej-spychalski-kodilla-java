@@ -70,7 +70,7 @@ public class FacebookTestingApp {
         Select selectYear = new Select(year);
         selectYear.selectByIndex(50);
 
-//        WebElement sex = driver.findElement(By.xpath(XPATH_SEX));
-//        sex.click();
+        WebElement sex = driver.findElement(By.xpath(XPATH_SEX));
+        sex.click();
     }
 }
