@@ -18,7 +18,7 @@ public class FacebookTestingApp {
     public static final String XPATH_DAY = "//select[@id=\"day\"]";
     public static final String XPATH_MONTH = "//select[@id=\"month\"]";
     public static final String XPATH_YEAR = "//select[@id=\"year\"]";
-    public static final String XPATH_SEX = "//select[@id=\"u_2_3\"]";
+    public static final String XPATH_SEX = "//input[@id=\"u_2_5\"]";
 
     public static void main(String[] args) throws InterruptedException {
         WebDriver driver = WebDriverConfig.getDriver(WebDriverConfig.CHROME);
